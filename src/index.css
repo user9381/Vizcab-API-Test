@@ -1,0 +1,47 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-image: linear-gradient(
+  45deg,
+  hsl(0deg 100% 45%) 0%,
+  hsl(2deg 100% 46%) 5%,
+  hsl(4deg 100% 46%) 10%,
+  hsl(7deg 100% 46%) 14%,
+  hsl(9deg 100% 46%) 19%,
+  hsl(11deg 100% 46%) 24%,
+  hsl(13deg 100% 47%) 29%,
+  hsl(15deg 100% 47%) 33%,
+  hsl(17deg 100% 47%) 38%,
+  hsl(20deg 100% 47%) 43%,
+  hsl(22deg 100% 48%) 48%,
+  hsl(24deg 100% 48%) 52%,
+  hsl(26deg 100% 48%) 57%,
+  hsl(29deg 100% 48%) 62%,
+  hsl(31deg 100% 48%) 67%,
+  hsl(33deg 100% 49%) 71%,
+  hsl(35deg 100% 49%) 76%,
+  hsl(37deg 100% 49%) 81%,
+  hsl(39deg 100% 49%) 86%,
+  hsl(42deg 100% 50%) 90%,
+  hsl(44deg 100% 50%) 95%,
+  hsl(46deg 100% 50%) 100%
+);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}

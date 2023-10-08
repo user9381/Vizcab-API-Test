@@ -1,9 +1,9 @@
-import { Employees } from '../../utils/Employees';
+import { EmployeeApiRes } from '../../utils/http-utils';
 import './Card.css';
 import CardItem from './CardItem';
 
 type EmployeesProps = {
-    employees: Array<Employees>;
+    employees: Array<EmployeeApiRes>;
 }
 
 function CardList({ employees }: EmployeesProps) {

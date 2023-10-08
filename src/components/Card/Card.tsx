@@ -1,34 +1,43 @@
 import { useEffect, useState } from 'react';
-import { API_URL } from '../../utils/http-utils';
-import { Employees } from '../../utils/Employees';
+import ErrorHandler from './ErrorHandler/ErrorHandler';
+import { API_URL, fetchData, EmployeeApiRes } from '../../utils/http-utils';
 import CardList from './CardList';
 import './Card.css';
 
 function Card() {
-    const [employees, setEmployees] = useState<Array<Employees>>([]);
-    const [fetchError, setFetchError] = useState<string | null>(null);
+    const [employees, setEmployees] = useState<Array<EmployeeApiRes>>([]);
+    const [error, setError] = useState<string | undefined>();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(API_URL)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
+        fetchData<Array<EmployeeApiRes>>(API_URL)
+            .then((data) => {
+                setEmployees(data);
+                setIsLoading(false);
             })
-            .then((data) => setEmployees(data))
             .catch((error) => {
-                setFetchError(`Problème avec le fetch : ${error}`);
+                setError(error.message.toString());
+                setIsLoading(false);
             });
     }, []);
 
     return (
         <div className='card'>
-            <h1>Employees</h1>
-            {fetchError ? (
-                <p>Une erreur s'est produite : {fetchError}</p>
+            {isLoading ? (
+                <div id='loading'>
+                    <h1>Loading...</h1>
+                </div>
             ) : (
-                <CardList employees={employees} />
+               <>
+                    {!error ? (
+                        <>
+                            <h1>Employees</h1>
+                            <CardList employees={employees} />
+                        </>
+                    ) : (
+                        <ErrorHandler error={error} />
+                    )}
+                </>
             )}
         </div>
     );

@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { Employees } from '../../utils/Employees';
+import { EmployeeApiRes } from '../../utils/http-utils';
 import './Card.css';
 import icon from '../../assets/icon-user.svg';
 
 type EmployeesProps = {
-    employees: Employees;
+    employees: EmployeeApiRes;
 }
 
 function CardItem({ employees }: EmployeesProps) {
@@ -18,7 +18,7 @@ function CardItem({ employees }: EmployeesProps) {
     }, [employees.experience_in_job]);
 
     return (
-        <div className='employees-card'>
+        <div className='employee-card'>
             <div className='card-header'>
                 <img className='avatar' src={icon} alt='avatar icon card' loading="lazy" />
             </div>
@@ -27,6 +27,7 @@ function CardItem({ employees }: EmployeesProps) {
                 <p>{employees.job_title} / {employees.department}</p>
                 <p>{employees.company_name}</p>
                 <div className="progress-container">
+                    <p className='experience-job'>{employees.experience_in_job}/10</p>
                     <div className="progress-bar" ref={progressBarRef}></div>
                 </div>
             </div>
